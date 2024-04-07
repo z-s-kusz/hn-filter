@@ -1,3 +1,14 @@
+nav {
+  border-bottom: 2px solid rgb(227, 139, 24);
+
+  a {
+    margin: 0 1rem;
+  }
+  a:first-child {
+    margin-left: 0;
+  }
+}
+
 .post {
   display: block;
   padding: 12px 0;
