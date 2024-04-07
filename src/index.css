@@ -17,3 +17,7 @@ nav {
     padding-bottom: 10px;
   }
 }
+
+.filter-delete {
+  margin: 0 8px;
+}
