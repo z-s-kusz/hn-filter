@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.13.1",
-    "solid-js": "^1.8.15"
+    "solid-js": "^1.8.15",
+    "solid-transition-group": "^0.2.3"
   },
   "devDependencies": {
     "vite": "^5.2.0",

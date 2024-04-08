@@ -1,4 +1,5 @@
 import { For, Match, Switch, createSignal, onCleanup } from 'solid-js';
+import { TransitionGroup } from 'solid-transition-group';
 import { getPosts as getHNPosts, postLimit } from '../services/hn-firebase';
 import { filters, filteredItems, setFilteredItems } from '../stores/filters';
 import FilteredOutPosts from '../components/FilteredOutPosts';
@@ -13,9 +14,9 @@ export default function Home() {
 
     try {
       const postsJSON = await getHNPosts();
-      setPosts(postsJSON);
       const filteredPosts = filterPosts(postsJSON);
       if (filteredPosts.length > postLimit) filteredPosts.length = postLimit; // remove items past the limit by mutating
+      setPosts(filteredPosts);
       setError(false);
     } catch(error) {
       console.error('caught err', error);
@@ -64,17 +65,19 @@ export default function Home() {
     <>
       <Switch>
         <Match when={!loading() && !error()}>
-          <For each={posts()}>
-            {(post) => {
-              return <a class="post" href={post.url}>{post.title}</a>
-            }}
-          </For>
+          <TransitionGroup name="slide-fade" appear>
+              <For each={posts()}>
+                {(post) => {
+                  return <a class="post" href={post.url}>{post.title}</a>
+                }}
+              </For>
 
-          <FilteredOutPosts />
+              <FilteredOutPosts />
+          </TransitionGroup>
         </Match>
 
         <Match when={loading()}>
-          <span>loading...</span>
+          <span class="main-loading">loading...</span>
         </Match>
 
         <Match when={error()}>

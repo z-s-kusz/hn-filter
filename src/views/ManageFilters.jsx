@@ -1,4 +1,5 @@
 import { For, Show, createSignal } from 'solid-js';
+import { TransitionGroup } from 'solid-transition-group';
 import { filters, setFilters } from '../stores/filters';
 
 export default function ManageFilters() {
@@ -26,14 +27,14 @@ export default function ManageFilters() {
     };
 
     return (
-        <>
+        <TransitionGroup name="slide-fade" appear>
             <h2>Manage Filters</h2>
 
             <form onSubmit={addFilter}>
                 <label for="new-filter">Filter</label>
                 <input name="new-filter" autoComplete='off'
                     value={newFilterName()} onInput={(e) => setNewFilterName(e.target.value)} />
-                <span>* usernames are case sensitive, keywords are not</span>
+                <span class="hint">* usernames are case sensitive, keywords are not</span>
 
                 <fieldset>
                     <legend>Type</legend>
@@ -74,6 +75,6 @@ export default function ManageFilters() {
             <Show when={filters.length < 1}>
                 <p>No active filters</p>
             </Show>
-        </>
+        </TransitionGroup>
     );
 };
