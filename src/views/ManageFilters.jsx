@@ -6,9 +6,9 @@ export default function ManageFilters() {
     const [newFilterName, setNewFilterName] = createSignal('');
     const [newFilterType, setNewFilterType] = createSignal('keyword'); // keyword | username
 
-    // TODO handle empty name
     const addFilter = (event) => {
         event.preventDefault();
+        if (!newFilterName()) return;
 
         const newFilter = {
             id: self.crypto.randomUUID(),
@@ -33,11 +33,12 @@ export default function ManageFilters() {
             <form onSubmit={addFilter}>
                 <label for="new-filter">Filter</label>
                 <input name="new-filter" autoComplete='off'
+                    placeholder="add new filter"
                     value={newFilterName()} onInput={(e) => setNewFilterName(e.target.value)} />
                 <span class="hint">* usernames are case sensitive, keywords are not</span>
 
                 <fieldset>
-                    <legend>Type</legend>
+                    <legend>Filter Type</legend>
                     <label for="keyword">
                         Keyword
                         <input type="radio" name="keyword" value="keyword" id="keyword"
@@ -60,18 +61,33 @@ export default function ManageFilters() {
             <hr />
 
             <h3>Filters:</h3>
-            <ul>
-                <For each={filters}>
-                    {(filter) => {
-                        return (
-                            <li>
-                                {filter.value} | {filter.type}
-                                <button type="button" onClick={[deleteFilter, filter.id]} class="filter-delete">Delete</button>
-                            </li>
-                        );
-                    }}
-                </For>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Type</th>
+                        <th>Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <For each={filters}>
+                        {(filter) => {
+                            return (
+                                <tr>
+                                    <td>{filter.value}</td>
+                                    <td>{filter.type}</td>
+                                    <td>
+                                        <button type="button"
+                                            onClick={[deleteFilter, filter.id]} class="filter-delete">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            );
+                        }}
+                    </For>
+                </tbody>
+            </table>
             <Show when={filters.length < 1}>
                 <p>No active filters</p>
             </Show>
