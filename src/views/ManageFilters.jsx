@@ -1,8 +1,7 @@
 import { For, Show, createSignal } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import { filters, setFilters } from '../stores/filters';
 
 export default function ManageFilters() {
-    const [filters, setFilters] = createStore([]);
     const [newFilterName, setNewFilterName] = createSignal('');
     const [newFilterType, setNewFilterType] = createSignal('keyword'); // keyword | username
 
@@ -34,6 +33,7 @@ export default function ManageFilters() {
                 <label for="new-filter">Filter</label>
                 <input name="new-filter" autoComplete='off'
                     value={newFilterName()} onInput={(e) => setNewFilterName(e.target.value)} />
+                <span>* usernames are case sensitive, keywords are not</span>
 
                 <fieldset>
                     <legend>Type</legend>

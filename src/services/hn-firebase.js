@@ -1,10 +1,15 @@
-const postsLimit = 66;
+/* fetch 66 items in hopes that I can still show 60 items post filtering
+// if more than 6 items end up getting filtered I should remove some filters
+// don't let this echo chamber get too small */
+const fetchLimit = 66;
+// only show 60 posts, if I'm trying to scroll past page 2 I should find something better to do
+const postLimit = 60;
 
 const getPosts = async () => {
     try {
         const response = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty');
         const postIds = await response.json();
-        postIds.length = postsLimit; // limit number by mutating the array
+        postIds.length = fetchLimit; // limit number by mutating the array
         const posts = await getPostDetails(postIds);
 
         return Promise.resolve(posts);
@@ -30,4 +35,4 @@ const getPostDetails = async (postIds) => {
     }
 };
 
-export { postsLimit, getPosts };
+export { getPosts, postLimit };
