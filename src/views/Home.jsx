@@ -3,6 +3,7 @@ import { TransitionGroup } from 'solid-transition-group';
 import { getPosts as getHNPosts, postLimit } from '../services/hn-firebase';
 import { filters, filteredItems, setFilteredItems } from '../stores/filters';
 import FilteredOutPosts from '../components/FilteredOutPosts';
+import ScrollToTop from '../components/ScrollToTop';
 
 export default function Home() {
   const [loading, setLoading] = createSignal(false);
@@ -55,6 +56,10 @@ export default function Home() {
     return filteredPosts;
   };
 
+  const reload = () => {
+    location.reload();
+  };
+
   getPosts();
 
   onCleanup(() => {
@@ -73,6 +78,7 @@ export default function Home() {
               </For>
 
               <FilteredOutPosts />
+              <ScrollToTop />
           </TransitionGroup>
         </Match>
 
@@ -83,7 +89,7 @@ export default function Home() {
         <Match when={error()}>
           <div>
             Error loading posts.
-            <button type="button" onClick={getPosts}>Reload</button>
+            <button class="reload-btn" type="button" onClick={reload}>Reload</button>
              or see console for more details.
           </div>
         </Match>
