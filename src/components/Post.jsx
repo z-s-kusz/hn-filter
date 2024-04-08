@@ -2,6 +2,8 @@ export default function Post(props) {
     const hnCommentUrl = 'https://news.ycombinator.com/item?id=' + props.post.id;
 
     const getBaseUrl = (url) => {
+        if (!url) return '';
+
         const pathArray = url.split( '/' );
         const protocol = pathArray[0];
         const host = pathArray[2];
