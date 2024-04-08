@@ -4,6 +4,7 @@ import { getPosts as getHNPosts, postLimit } from '../services/hn-firebase';
 import { filters, filteredItems, setFilteredItems } from '../stores/filters';
 import FilteredOutPosts from '../components/FilteredOutPosts';
 import ScrollToTop from '../components/ScrollToTop';
+import Post from '../components/Post';
 
 export default function Home() {
   const [loading, setLoading] = createSignal(false);
@@ -73,7 +74,7 @@ export default function Home() {
           <TransitionGroup name="slide-fade" appear>
               <For each={posts()}>
                 {(post) => {
-                  return <a class="post" href={post.url}>{post.title}</a>
+                  return <Post post={post} />
                 }}
               </For>
 
