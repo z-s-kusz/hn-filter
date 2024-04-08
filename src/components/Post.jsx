@@ -14,8 +14,8 @@ export default function Post(props) {
     const baseUrl = getBaseUrl(props.post.url);
 
     return (
-        <div>
-            <a class="post" href={props.post.url}>
+        <div class="post">
+            <a href={props.post.url}>
                 {props.post.title}
             </a>
             <div class="post-line-2">
