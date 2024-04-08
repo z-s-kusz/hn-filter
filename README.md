@@ -26,3 +26,19 @@ Your app is ready to be deployed!
 ## Deployment
 
 Learn more about deploying your application with the [documentations](https://vitejs.dev/guide/static-deploy.html)
+
+## Notes to Self / Learning as I go
+
+solid-transition-group:
+
+-   The &lt;Transition> component will happily take multiple elements and destroy everything except for the first child
+    without so much as a warning. Be sure to use &lt;TransitionGroup> if there is more than 1 child.
+    Yes I know that sounds obvious, but it would be nice if it at least popped a warning saying
+    'maybe you'd prefer TransitionGroup here, hmmm?' I wonder what is going on under the hood there? Why not just have 1
+    component that could handle 1 or many children? Why not just use TransitionGroup all the time? I'm sure there is a
+    good reason to have both, I'll have to look into it at some point.
+
+SolidJS signal vs store:
+
+-   Store (createStore()) has some excellent methods for working with a changing array.
+    Definitely worth using over signals at times.
