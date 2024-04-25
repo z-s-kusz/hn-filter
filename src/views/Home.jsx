@@ -42,6 +42,8 @@ export default function Home() {
         if (filter.type === 'keyword') {
           const keyword = filter.value.toLowerCase();
           if (title.includes(keyword)) showPost = false;
+        } else if (filter.type === 'domain') {
+          if (post.url && post.url.includes(filter.value)) showPost = false;
         } else {
           if (author === filter.value) showPost = false;
         }

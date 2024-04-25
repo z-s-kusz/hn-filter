@@ -4,7 +4,7 @@ import { filters, setFilters } from '../stores/filters';
 
 export default function ManageFilters() {
     const [newFilterName, setNewFilterName] = createSignal('');
-    const [newFilterType, setNewFilterType] = createSignal('keyword'); // keyword | username
+    const [newFilterType, setNewFilterType] = createSignal('keyword'); // keyword | username | domain
 
     const addFilter = (event) => {
         event.preventDefault();
@@ -35,7 +35,7 @@ export default function ManageFilters() {
                 <input name="new-filter" autoComplete='off'
                     placeholder="add new filter"
                     value={newFilterName()} onInput={(e) => setNewFilterName(e.target.value)} />
-                <span class="hint">* usernames are case sensitive, keywords are not</span>
+                <span class="hint">* usernames and domains are case sensitive, keywords are not</span>
 
                 <fieldset>
                     <legend>Filter Type</legend>
@@ -52,6 +52,14 @@ export default function ManageFilters() {
                         <input type="radio" name="username" value="username" id="username"
                             onInput={(e) => setNewFilterType(e.target.value)}
                             checked={newFilterType() === 'username'}
+                        />
+                    </label>
+
+                    <label for="domain">
+                        Domain
+                        <input type="radio" name="domain" value="domain" id="domain"
+                            onInput={(e) => setNewFilterType(e.target.value)}
+                            checked={newFilterType() === 'domain'}
                         />
                     </label>
                 </fieldset>
