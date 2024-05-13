@@ -2,7 +2,6 @@ import { For, Match, Switch, createSignal, onCleanup } from 'solid-js';
 import { TransitionGroup } from 'solid-transition-group';
 import { getPosts as getHNPosts, postLimit } from '../services/hn-firebase';
 import { filters, filteredItems, setFilteredItems } from '../stores/filters';
-import FilteredOutPosts from '../components/FilteredOutPosts';
 import ScrollToTop from '../components/ScrollToTop';
 import Post from '../components/Post';
 
@@ -80,7 +79,6 @@ export default function Home() {
                 }}
               </For>
 
-              <FilteredOutPosts />
               <ScrollToTop />
           </TransitionGroup>
         </Match>
