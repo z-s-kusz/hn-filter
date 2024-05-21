@@ -27,6 +27,11 @@ Your app is ready to be deployed!
 
 Learn more about deploying your application with the [documentations](https://vitejs.dev/guide/static-deploy.html)
 
+## netlify cloud functions
+
+Need to have netlify cli installed globally.
+Run `NODE_OPTIONS=--inspect netlify functions:serve` to start a server on port 9999 for local testing.
+
 ## Notes to Self / Learning as I go
 
 solid-transition-group:
