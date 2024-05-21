@@ -9,6 +9,7 @@ import About from "./views/About";
 import ManageFilters from "./views/ManageFilters";
 import NotFound from "./views/NotFound";
 import LLMTest from './views/LLM-Test';
+import AISuggestedPosts from './views/AISuggestedPosts';
 
 const App = props => (
   <>
@@ -21,6 +22,7 @@ render(() => (
   <Router root={App}>
     <Route path="/about" component={About} />
     <Route path="/manage-filters" component={ManageFilters} />
+    <Route path="posts-for-haters" component={AISuggestedPosts} />
 
     <Show when={import.meta.env.DEV}>
       <Route path="/llm-test" component={LLMTest} />

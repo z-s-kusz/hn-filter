@@ -4,6 +4,7 @@ import { getPosts as getHNPosts, postLimit } from '../services/hn-firebase';
 import { filters, filteredItems, setFilteredItems } from '../stores/filters';
 import ScrollToTop from '../components/ScrollToTop';
 import Post from '../components/Post';
+import { checkForAISuggestedPosts } from '../stores/AISuggestedPosts';
 
 export default function Home() {
   const [loading, setLoading] = createSignal(false);
@@ -16,6 +17,7 @@ export default function Home() {
     try {
       const postsJSON = await getHNPosts();
       const filteredPosts = filterPosts(postsJSON);
+      checkForAISuggestedPosts();
       if (filteredPosts.length > postLimit) filteredPosts.length = postLimit; // remove items past the limit by mutating
       setPosts(filteredPosts);
       setError(false);
@@ -34,22 +36,36 @@ export default function Home() {
 
     const filteredPosts = allPosts.filter((post) => {
       let showPost = true;
+      let appliedFilter = null;
       const title = post.title.toLowerCase();
       const author = post.by;
   
       filters.forEach((filter) => {
         if (filter.type === 'keyword') {
           const keyword = filter.value.toLowerCase();
-          if (title.includes(keyword)) showPost = false;
+          if (title.includes(keyword)) {
+            showPost = false;
+            appliedFilter = filter;
+          }
         } else if (filter.type === 'domain') {
-          if (post.url && post.url.includes(filter.value)) showPost = false;
+          if (post.url && post.url.includes(filter.value)){
+            showPost = false;
+            appliedFilter = filter;
+          }
         } else {
-          if (author === filter.value) showPost = false;
+          if (author === filter.value) {
+            showPost = false;
+            appliedFilter = filter;
+          }
         }
       });
 
       if (!showPost) {
-        setFilteredItems([...filteredItems(), post]);
+        const filteredPost = {
+          post,
+          appliedFilter,
+        };
+        setFilteredItems([...filteredItems(), filteredPost]);
       }
 
       return showPost;
@@ -69,7 +85,7 @@ export default function Home() {
   });
 
   return (
-    <>
+    <main>
       <Switch>
         <Match when={!loading() && !error()}>
           <TransitionGroup name="slide-fade" appear>
@@ -95,6 +111,6 @@ export default function Home() {
           </div>
         </Match>
       </Switch>
-    </>
+    </main>
   )
 }
