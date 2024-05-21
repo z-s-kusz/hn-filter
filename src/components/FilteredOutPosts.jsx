@@ -1,5 +1,6 @@
 import { For, Show, createSignal } from 'solid-js';
 import { filteredItems } from '../stores/filters';
+import Post from './Post';
 
 export default function FilteredOutPosts() {
     const [hidePosts, setHidePosts] = createSignal(true);
@@ -21,11 +22,11 @@ export default function FilteredOutPosts() {
                     <div class="sad-mad-content">
                         <h2>Filtered Posts</h2>
                         <button type="button" onClick={[setHidePosts, true]}>
-                            Step Back Towards Sanity and Hide these Posts Again
+                            Step Back Towards Sanity and Hide These Posts Again
                         </button>
                         <For each={filteredItems()}>
                             {(post) => {
-                                return <a class="post" href={post.url}>{post.title}</a>;
+                                return <Post post={post} />;
                             }}
                         </For>
                     </div>

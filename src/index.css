@@ -49,13 +49,17 @@ nav {
 
 .sad-mad {
   background: rgb(176,84,39);
-  background: linear-gradient(45deg, rgba(176,84,39,1) 20%, rgba(255,0,0,1) 100%);
+  background: linear-gradient(45deg, rgba(176, 84, 39, 1) 20%, rgb(165, 0, 0) 100%);
 
   margin: 1rem;
 
   .sad-mad-content {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background: rgb(255, 124, 58);
   }
 }
 
