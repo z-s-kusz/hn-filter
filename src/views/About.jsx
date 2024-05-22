@@ -12,12 +12,13 @@ export default function About() {
 
             <h2>What is the 'Posts For Haters' Section?</h2>
             <p>
-                With the keyword filter, you can easily hide posts that discuss specific topics you're not interested in.
-                However, we understand that sometimes it's not just about avoiding certain content, but also reveling in negativity.
+                With the keyword filter, you can easily hide posts that discuss topics you're not interested in.
+                That makes it easy to silence hype cycles around tools, frameworks, games or current events.
+                However it can be nice to see the eventual posts criticizing these things once the hype dies down.
             </p>
             <p>
-                That's why we've introduced the "Posts for Haters" section.
-                When you filter out posts by a keyword, our system identifies and resurfaces posts that negatively mention the keyword.
+                That's why I added the "Posts for Haters" section.
+                When you filter out posts by a keyword, the app identifies and resurfaces posts that negatively mention the keyword.
                 This way, you can steer clear of the content you want to avoid but still be a hater.
             </p>
 
@@ -26,6 +27,18 @@ export default function About() {
                 When an item is filtered via keyword, the app will use ChatGPT 3.5 Turbo to perform a sentiment analysis on the title.
                 If the AI determines that the title portrays a negative sentiment about the keyword then the article will be resurfaced in the section.
                 Posts that ChatGPT determines to be 'neutral' or 'positive' in regards to the keyword will stay hidden.
+            </p>
+        
+            <p>
+                The reason I decided to use an LLM for this task instead of other sentiment analysis tools
+                is that other tools don't allow for analysis by subject.
+                For example, in the sentence
+                &nbsp;<code>“Apples are better than oranges.”</code>&nbsp;
+                other tools determine that the sentiment is positive because of the use of the word “better.”
+                But what if we wanted to know the sentiment in regards to “oranges” specifically?
+                As humans we understand that this sentence is only positive toward apples and is at best neutral toward oranges.
+                From my testing with ChatGPT I found it was (so far!) 100% accurate and in agreement with me
+                when I asked it to perform sentiment analysis with a specific subject in mind.
             </p>
     
             <hr/>
