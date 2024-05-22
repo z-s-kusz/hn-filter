@@ -30,7 +30,12 @@ Learn more about deploying your application with the [documentations](https://vi
 ## netlify cloud functions
 
 Need to have netlify cli installed globally.
-Run `NODE_OPTIONS=--inspect netlify functions:serve` to start a server on port 9999 for local testing.
+Run `npm run dev-server` in a second terminal to start a server on port 9999 for local testing.
+
+## To run without netlify
+
+Comment out code in `checkForAISuggestedPosts` to remove all console errors but the app should continue to run
+even if the netlify network requests fail.
 
 ## Notes to Self / Learning as I go
 
