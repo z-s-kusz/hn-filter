@@ -16,7 +16,8 @@ export default function Home() {
 
     try {
       const postsJSON = await getHNPosts();
-      const filteredPosts = filterPosts(postsJSON);
+      const nonNullPosts = postsJSON.filter(post => post);
+      const filteredPosts = filterPosts(nonNullPosts);
       checkForAISuggestedPosts();
       if (filteredPosts.length > postLimit) filteredPosts.length = postLimit; // remove items past the limit by mutating
       setPosts(filteredPosts);
