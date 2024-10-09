@@ -14,7 +14,7 @@ async function getSentimentAnalysis(subject, text) {
                 { role: 'system', content: "Only print 'positive', 'negative', or 'neutral'." },
                 {
                     role: 'user',
-                    content: `Classify the sentiment of the message \"${text}\" in regards to ${subject}.`,
+                    content: `Classify the sentiment of the message \"${text.toLowerCase()}\" in regards to ${subject.toLowerCase()}.`,
                 },
             ],
             model: 'gpt-3.5-turbo',
