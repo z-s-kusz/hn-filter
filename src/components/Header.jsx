@@ -7,7 +7,8 @@ export default function Header() {
             <h1>Filtered HN Browser</h1>
             <nav>
                 <a href="/">Home</a>
-                <a href="manage-filters">Manage Filters</a>
+                <a href="/manage-filters">Filters</a>
+                <a href="/logs">Logs</a>
                 <a href="/about">About</a>
                 <Show when={import.meta.env.DEV}>
                     <a href="/llm-test">LLM Test</a>
