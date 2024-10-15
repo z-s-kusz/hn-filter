@@ -91,3 +91,9 @@ nav {
   transform: translateX(-10px);
 }
 /*** ***/
+
+.log-details {
+  p {
+    margin: 0.5rem 3rem;
+  }
+}
