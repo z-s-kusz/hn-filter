@@ -15,7 +15,7 @@ export default function LLMTest() {
         event.preventDefault();
 
         const newMessage = {
-            id: self.crypto.randomUUID(),
+            id: 'test_' + self.crypto.randomUUID(),
             subject: subject(),
             text: text(),
             response: 'loading...',
