@@ -1,3 +1,5 @@
+import { logAnalysisResults } from './analysis-results-logs';
+
 const getSentimentAnalysis = async (data) => {
     const domain = import.meta.env.DEV ? 'http://localhost:9999' : '';
     const url = domain + '/.netlify/functions/sentiment-analysis';
@@ -8,10 +10,17 @@ const getSentimentAnalysis = async (data) => {
             body: JSON.stringify(data),
         });
         const body = await response.json();
+        
+        logAnalysisResults({
+            postId: body.id,
+            subject: body.subject,
+            text: body.text,
+            analysis: body.result,
+        });
 
         return body;
     } catch (error) {
-        console.log('error getting analysis', error);
+        console.error('error getting analysis', error);
     }
 };
 

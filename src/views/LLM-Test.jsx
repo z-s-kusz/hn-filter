@@ -31,7 +31,7 @@ export default function LLMTest() {
 
         try {
             const data = {
-                id: 'test_' + logId(),
+                postId: 'test_' + logId(),
                 subject: 'oranges',
                 text: 'oranges are bad',
                 analysis: logAnalysis(),

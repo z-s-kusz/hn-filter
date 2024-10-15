@@ -67,7 +67,7 @@ async function logAnalysisResult(postId, text, subject, analysis) {
 exports.handler = async function (event, context) {
     const body = JSON.parse(event.body || {});
 
-    if (!body.id || !body.text || !body.subject || !body.analysis) {
+    if (!body.postId || !body.text || !body.subject || !body.analysis) {
         return {
             headers: corsHeader,
             statusCode: 400,
@@ -75,7 +75,7 @@ exports.handler = async function (event, context) {
     }
 
     try {
-        await logAnalysisResult(body.id, body.text, body.subject, body.analysis);
+        await logAnalysisResult(body.postId, body.text, body.subject, body.analysis);
         return {
             headers: corsHeader,
             statusCode: 200,
