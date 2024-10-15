@@ -2,7 +2,7 @@ export const getLoggingPreference = () => {
     const logPreference = localStorage.getItem('logs');
 
     if (logPreference) {
-        return logPreference == true;
+        return logPreference === 'true';
     }
     return false;
 };

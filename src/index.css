@@ -1,8 +1,12 @@
+:root {
+  --highlight-color: rgb(227, 139, 24);
+}
+
 header {
   margin-bottom: 0.4rem;
 }
 nav {
-  border-bottom: 2px solid rgb(227, 139, 24);
+  border-bottom: 2px solid var(--highlight-color);
 
   a {
     margin: 0 1rem;
@@ -96,4 +100,10 @@ nav {
   p {
     margin: 0.5rem 3rem;
   }
+}
+
+.log-preferences {
+  margin-top: 3rem;
+  border: 2px solid var(--highlight-color);
+  padding: 2rem;
 }
