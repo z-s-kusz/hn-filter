@@ -17,7 +17,7 @@ async function getSentimentAnalysis(subject, text) {
                     content: `Classify the sentiment of the message \"${text.toLowerCase()}\" in regards to ${subject.toLowerCase()}.`,
                 },
             ],
-            model: 'gpt-3.5-turbo',
+            model: 'gpt-4o-mini',
         });
 
         const assesment = completion.choices[0].message.content;
@@ -41,6 +41,7 @@ exports.handler = async function (event, context) {
 
     try {
         const assesment = await getSentimentAnalysis(body.subject, body.text);
+        console.log('ASSESMENT', assesment);
         const responseBody = JSON.stringify({
             id: body.id,
             text: body.text,

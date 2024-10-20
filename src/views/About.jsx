@@ -24,7 +24,7 @@ export default function About() {
 
             <h2>How do you decide what goes in the 'Posts for Haters' section?</h2>
             <p>
-                When an item is filtered via keyword, the app will use ChatGPT 3.5 Turbo to perform a sentiment analysis on the title.
+                When an item is filtered via keyword, the app will use ChatGPT 4.0-Mini to perform a sentiment analysis on the title.
                 If the AI determines that the title portrays a negative sentiment about the keyword then the article will be resurfaced in the section.
                 Posts that ChatGPT determines to be 'neutral' or 'positive' in regards to the keyword will stay hidden.
             </p>
