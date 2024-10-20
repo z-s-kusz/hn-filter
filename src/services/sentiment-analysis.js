@@ -17,7 +17,7 @@ const getSentimentAnalysis = async (data) => {
                 postId: body.id,
                 subject: body.subject,
                 text: body.text,
-                analysis: body.result,
+                analysis: body.response,
             });
         }
 
