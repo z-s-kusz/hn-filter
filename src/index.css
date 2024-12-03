@@ -20,10 +20,10 @@ nav {
   padding: 0.56rem 0;
 }
 
-.baseurl, .comments {
+.baseurl, .comments, .story-link {
   padding-bottom: 4px;
 }
-.comments:hover {
+.comments:hover, .story-link:hover {
   padding-bottom: 2px;
 }
 
@@ -102,5 +102,16 @@ nav {
 }
 .sub-header {
   margin: 0;
-  border-bottom: 2px solid light-dark(#000, #fff);
+  border-bottom: 2px solid light-dark(#222, #ddd);
+}
+
+.story-body {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 4px;
+  /* TODO test light value :) */
+  background-color: light-dark(#ccc, #00000063);
+}
+.story-link {
+  display: block;
 }
