@@ -24,7 +24,7 @@ export default function LogOptIn() {
                 <summary>More Information on Logging</summary>
                 <h3>Key Info</h3>
                 <ul>
-                    <li>Post title, post subject, and AI analysis are logged — no personal information is included.</li>
+                    <li>Only post title, subject, and AI analysis are logged.</li>
                     <li>Only posts that match a filter are logged.</li>
                     <li>Logging is disabled by default and is opt-in.</li>
                     <li>Your logging preference is saved locally on your device.</li>
