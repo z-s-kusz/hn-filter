@@ -16,31 +16,38 @@ async function getMostRecentStories() {
         const latestIssueHTML = await latestIssueResponse.text();
         const $ = cheerio.load(latestIssueHTML);
         const $stories = $('p.desc');
+        const $quickLinks = $('li');
 
-        const stories = transformStories($, $stories);
+        const bigStories = transformStories($, $stories, true);
+        const quickLinks = transformStories($, $quickLinks, false);
+        const allStories = bigStories.concat(quickLinks);
 
-        return stories;
+        return allStories;
     } catch (err) {
         console.error('getMostRecentStories error:', err);
         throw Error('Error getting stories.');
     }
 }
 
-function transformStories($, $stories) {
+function transformStories($, $stories, attributions = false) {
     let stories = [];
 
     $stories.each((_i, storyElement) => {
         const links = [];
-        const $links = $(storyElement).children('a');
+        const $links = $(storyElement).find('a');
         $links.each((_j, linkElement) => {
             const href = $(linkElement).attr('href');
             links.push(href);
         });
 
+        // prevent attribution from showing up twice or not at all since it appears as part of the storyElementBody sometimes
+        const attribution = attributions ? $(storyElement).parent().find('.name').text().trim() : '';
+        $(storyElement).parent().find('.name').remove();
+
         const story = {
-            body: $(storyElement).text(),
+            body: $(storyElement).html(),
             links,
-            attribution: $(storyElement).parent().find('p.name').text().trim(),
+            attribution,
         };
         stories.push(story);
     });
@@ -62,7 +69,6 @@ exports.handler = async function (event, context) {
     const filtersString = event.queryStringParameters.filters || '';
     // split returns an array of 1 [''] when provided an empty string, use empty array instead
     const filters = filtersString ? filtersString.toLowerCase().split(',') : [];
-    console.log(filters);
 
     try {
         let stories = await getMostRecentStories();
