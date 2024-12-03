@@ -12,6 +12,7 @@ import LLMTest from './views/LLM-Test';
 import AISuggestedPosts from './views/AISuggestedPosts';
 import FEFocus from './views/FEFocus';
 import JSWeekly from './views/JSWeekly';
+import Logs from './views/Logs';
 
 const App = props => (
   <>
@@ -25,6 +26,7 @@ render(() => (
     <Route path="/about" component={About} />
     <Route path="/manage-filters" component={ManageFilters} />
     <Route path="posts-for-haters" component={AISuggestedPosts} />
+    <Route path="/logs" component={Logs} />
     <Route path="/frontend-focus" component={FEFocus} />
     <Route path="/js-weekly" component={JSWeekly} />
 

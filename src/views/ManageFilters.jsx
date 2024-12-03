@@ -1,6 +1,7 @@
 import { For, Show, createSignal } from 'solid-js';
 import { TransitionGroup } from 'solid-transition-group';
 import { filters, setFilters } from '../stores/filters';
+import LogOptIn from '../components/LogOptIn';
 
 export default function ManageFilters() {
     const [newFilterName, setNewFilterName] = createSignal('');
@@ -99,6 +100,10 @@ export default function ManageFilters() {
             <Show when={filters.length < 1}>
                 <p>No active filters</p>
             </Show>
+
+            <hr />
+
+            <LogOptIn />
         </TransitionGroup>
     );
 };

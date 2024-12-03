@@ -10,6 +10,7 @@
     "dev-server": "NODE_OPTIONS=--inspect netlify functions:serve"
   },
   "dependencies": {
+    "@azure/cosmos": "^4.1.1",
     "@solidjs/router": "^0.13.1",
     "cheerio": "^1.0.0",
     "openai": "^4.47.1",

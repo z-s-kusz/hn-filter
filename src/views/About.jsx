@@ -24,7 +24,7 @@ export default function About() {
 
             <h2>How do you decide what goes in the 'Posts for Haters' section?</h2>
             <p>
-                When an item is filtered via keyword, the app will use ChatGPT 3.5 Turbo to perform a sentiment analysis on the title.
+                When an item is filtered via keyword, the app will use ChatGPT 4.0-Mini to perform a sentiment analysis on the title.
                 If the AI determines that the title portrays a negative sentiment about the keyword then the article will be resurfaced in the section.
                 Posts that ChatGPT determines to be 'neutral' or 'positive' in regards to the keyword will stay hidden.
             </p>
@@ -37,8 +37,9 @@ export default function About() {
                 other tools determine that the sentiment is positive because of the use of the word “better.”
                 But what if we wanted to know the sentiment in regards to “oranges” specifically?
                 As humans we understand that this sentence is only positive toward apples and is at best neutral toward oranges.
-                From my testing with ChatGPT I found it was (so far!) 100% accurate and in agreement with me
+                From my testing with ChatGPT I found it's ~95% accurate and in agreement with me
                 when I asked it to perform sentiment analysis with a specific subject in mind.
+                I've since added logging to verify the analysis it provides.
             </p>
     
             <hr/>
