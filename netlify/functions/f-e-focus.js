@@ -48,15 +48,30 @@ function transformStories($, $stories) {
     return stories;
 }
 
+function filterStories(stories, filters) {
+    return stories.filter((story) => {
+        let includeStory = true;
+        filters.forEach((filter) => {
+            if (story.body.toLowerCase().includes(filter)) includeStory = false;
+        });
+        return includeStory;
+    });
+}
+
 exports.handler = async function (event, context) {
+    const filtersString = event.queryStringParameters.filters || '';
+    // split returns an array of 1 [''] when provided an empty string, use empty array instead
+    const filters = filtersString ? filtersString.toLowerCase().split(',') : [];
+    console.log(filters);
+
     try {
-        const stories = await getMostRecentStories();
-        const responseBody = JSON.stringify(stories);
+        let stories = await getMostRecentStories();
+        if (filters.length) stories = filterStories(stories, filters);
 
         return {
             headers,
             statusCode: 200,
-            body: responseBody,
+            body: JSON.stringify(stories),
         };
     } catch (err) {
         console.error(err);
