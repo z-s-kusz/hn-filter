@@ -5,6 +5,7 @@ header {
   margin-bottom: 0.4rem;
 }
 nav {
+  position: relative;
   border-bottom: 2px solid rgb(227, 139, 24);
 
   a {
@@ -15,15 +16,36 @@ nav {
   }
 }
 
+.drawer {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  width: 200px;
+  background-color: black;
+  border-radius: 5px;
+  padding: 1rem;
+
+  a {
+    display: block;
+    margin: 0;
+  }
+}
+
+.extras-button {
+  float: right;
+  font-size: 1.8rem;
+  padding: 2px 5px;
+}
+
 .post, .main-loading {
   display: block;
   padding: 0.56rem 0;
 }
 
-.baseurl, .comments {
+.baseurl, .comments, .drawer a {
   padding-bottom: 4px;
 }
-.comments:hover {
+.comments:hover, .drawer a:hover {
   padding-bottom: 2px;
 }
 
@@ -43,6 +65,10 @@ nav {
 @media (max-width: 382px) {
   .post-line-2 {
     font-size: 1rem;
+  }
+  .extras-button {
+    font-size: 1.35rem;
+    padding: 2px 4px;
   }
 }
 
@@ -93,25 +119,26 @@ nav {
 .slide-fade-enter {
   transform: translateX(-10px);
 }
+
+.drawer-enter-active,
+.drawer-exit-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.drawer-enter,
+.drawer-exit-to {
+  opacity: 0;
+}
+.drawer-enter {
+  transform: translateY(-20px);
+}
 /*** ***/
 
-.extras-button {
-  float: right;
-  font-size: 1.8rem;
-  padding: 2px 5px;
-}
 .sub-header {
   margin: 0;
+  margin-bottom: 4px;
   border-bottom: 2px solid light-dark(#222, #ddd);
 }
 
 .story {
   margin-bottom: 1.5rem;
-}
-.story-body {
-  margin: 0;
-  padding: 1rem;
-  border-radius: 4px;
-  /* TODO test light value :) */
-  background-color: light-dark(#ccc, #00000063);
 }

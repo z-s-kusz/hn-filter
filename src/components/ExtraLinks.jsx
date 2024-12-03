@@ -11,10 +11,9 @@ export default function ExtraLinks() {
     return (
         <>
             <button class="extras-button" type="button" onClick={toggleOpen}>Extras</button>
-            {/* TODO change transition */}
-            <Transition name="slide-fade">
+            <Transition name="drawer">
                 <Show when={open()}>
-                    <div>
+                    <div class="drawer">
                         <p class="sub-header">Newsletters</p>
                         <a href="/frontend-focus" onClick={toggleOpen}>Frontend Focus</a>
                         <a href="/js-weekly" onClick={toggleOpen}>JS Weekly</a>
