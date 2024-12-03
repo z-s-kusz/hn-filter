@@ -8,6 +8,7 @@ export default function FEFocus() {
 
     async function getStories() {
         const storiesResponse = await getFEFocus();
+        console.log('final result', storiesResponse);
         // setStories(storiesResponse);
     }
 

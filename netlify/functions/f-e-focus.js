@@ -5,9 +5,6 @@ const headers = {
 };
 const feFocus = 'https://frontendfoc.us'; // no trailing slash
 
-// story = { title, link, attribution };
-// story = { body, link, attribution }; ???? leaning towards this - lots of story titles are written in context
-
 async function getMostRecentStories() {
     try {
         const homeResponse = await fetch(feFocus);
@@ -18,14 +15,37 @@ async function getMostRecentStories() {
         const latestIssueResponse = await fetch(feFocus + link);
         const latestIssueHTML = await latestIssueResponse.text();
         const $ = cheerio.load(latestIssueHTML);
-
         const $stories = $('p.desc');
-        console.log(link);
-        return [];
-    } catch (error) {
-        console.error('getMostRecentStories error:', error);
+
+        const stories = transformStories($, $stories);
+
+        return stories;
+    } catch (err) {
+        console.error('getMostRecentStories error:', err);
         throw Error('Error getting stories.');
     }
+}
+
+function transformStories($, $stories) {
+    let stories = [];
+
+    $stories.each((_i, storyElement) => {
+        const links = [];
+        const $links = $(storyElement).children('a');
+        $links.each((_j, linkElement) => {
+            const href = $(linkElement).attr('href');
+            links.push(href);
+        });
+
+        const story = {
+            body: $(storyElement).text(),
+            links,
+            attribution: $(storyElement).parent().find('p.name').text().trim(),
+        };
+        stories.push(story);
+    });
+
+    return stories;
 }
 
 exports.handler = async function (event, context) {
@@ -38,7 +58,7 @@ exports.handler = async function (event, context) {
             statusCode: 200,
             body: responseBody,
         };
-    } catch (error) {
+    } catch (err) {
         console.error(err);
         return {
             headers,
