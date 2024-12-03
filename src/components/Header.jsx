@@ -1,5 +1,6 @@
 import { Show } from 'solid-js';
 import { suggestedPosts } from '../stores/AISuggestedPosts';
+import ExtraLinks from './ExtraLinks';
 
 export default function Header() {
     return (
@@ -15,6 +16,7 @@ export default function Header() {
                 <Show when={suggestedPosts().length}>
                     <a href="/posts-for-haters">Hater Posts!?!</a>
                 </Show>
+                <ExtraLinks />
             </nav>
         </header>
     );

@@ -1,3 +1,6 @@
+:root {
+  color-scheme: light dark;
+}
 header {
   margin-bottom: 0.4rem;
 }
@@ -91,3 +94,13 @@ nav {
   transform: translateX(-10px);
 }
 /*** ***/
+
+.extras-button {
+  float: right;
+  font-size: 1.8rem;
+  padding: 2px 5px;
+}
+.sub-header {
+  margin: 0;
+  border-bottom: 2px solid light-dark(#000, #fff);
+}
