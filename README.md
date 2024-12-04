@@ -53,5 +53,13 @@ SolidJS signal vs store:
 -   Store (createStore()) has some excellent methods for working with a changing array.
     Definitely worth using over signals at times.
 
+Netlify:
+
 -   When running the project again a few months later I had to reinstall neltify cli globally in order to get it to work.
     I see lots of module type warnings but it runs fine otherwise.
+
+-   Netlify Imports:
+    -   Situation: I added some more netlify functions, they worked locally with my 'npm run dev-server' script in package.json
+        but when I deployed the app and tried to view my new page I got errors. Going into the netlify logs I saw this: "unexpected token 'export'".
+    -   Solution: I removed all commonjs style imports in ALL my netlify function files and replaced them with esm imports.
+    -   Note: This did not resolve the module type warnings mentioned above, but it all runs fine. I expect it is becuase of how I have to declare the export.handler, not sure if netlify supports another way to do that yet.
