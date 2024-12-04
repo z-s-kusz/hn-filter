@@ -12,6 +12,7 @@
   "dependencies": {
     "@azure/cosmos": "^4.1.1",
     "@solidjs/router": "^0.13.1",
+    "cheerio": "^1.0.0",
     "openai": "^4.47.1",
     "solid-js": "^1.8.15",
     "solid-transition-group": "^0.2.3"

@@ -10,6 +10,8 @@ import ManageFilters from "./views/ManageFilters";
 import NotFound from "./views/NotFound";
 import LLMTest from './views/LLM-Test';
 import AISuggestedPosts from './views/AISuggestedPosts';
+import FEFocus from './views/FEFocus';
+import JSWeekly from './views/JSWeekly';
 import Logs from './views/Logs';
 
 const App = props => (
@@ -23,8 +25,10 @@ render(() => (
   <Router root={App}>
     <Route path="/about" component={About} />
     <Route path="/manage-filters" component={ManageFilters} />
-    <Route path="/posts-for-haters" component={AISuggestedPosts} />
+    <Route path="posts-for-haters" component={AISuggestedPosts} />
     <Route path="/logs" component={Logs} />
+    <Route path="/frontend-focus" component={FEFocus} />
+    <Route path="/js-weekly" component={JSWeekly} />
 
     <Show when={import.meta.env.DEV}>
       <Route path="/llm-test" component={LLMTest} />

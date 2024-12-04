@@ -52,3 +52,6 @@ SolidJS signal vs store:
 
 -   Store (createStore()) has some excellent methods for working with a changing array.
     Definitely worth using over signals at times.
+
+-   When running the project again a few months later I had to reinstall neltify cli globally in order to get it to work.
+    I see lots of module type warnings but it runs fine otherwise.
