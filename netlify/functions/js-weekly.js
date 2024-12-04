@@ -1,4 +1,4 @@
-const { getMostRecentStories, filterStories, headers } = require('./shared/newsletters');
+const { headers, getMostRecentStories, filterStories } = require('./shared/newsletters');
 
 exports.handler = async function (event, context) {
     const filtersString = event.queryStringParameters.filters || '';
@@ -6,7 +6,7 @@ exports.handler = async function (event, context) {
     const filters = filtersString ? filtersString.toLowerCase().split(',') : [];
 
     try {
-        const url = 'https://frontendfoc.us'; // no trailing slash
+        const url = 'https://javascriptweekly.com'; // no trailing slash
         let stories = await getMostRecentStories(url);
         if (filters.length) stories = filterStories(stories, filters);
 
