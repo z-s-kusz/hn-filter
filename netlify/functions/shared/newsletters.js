@@ -1,4 +1,4 @@
-const cheerio = require('cheerio');
+import * as cheerio from 'cheerio';
 
 export const headers = {
     'Access-Control-Allow-Origin': process.env.PORT ? 'https://x-filter-for-hn.netlify.app/' : '*',

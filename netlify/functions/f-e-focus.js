@@ -1,4 +1,4 @@
-const { getMostRecentStories, filterStories, headers } = require('./shared/newsletters');
+import { getMostRecentStories, filterStories, headers } from './shared/newsletters';
 
 exports.handler = async function (event, context) {
     const filtersString = event.queryStringParameters.filters || '';
