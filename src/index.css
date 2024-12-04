@@ -36,6 +36,7 @@ nav {
   float: right;
   font-size: 1.8rem;
   padding: 2px 5px;
+  border: none;
 }
 
 .post, .main-loading {
@@ -59,18 +60,22 @@ nav {
 }
 /* sakura break points | md: 684px, sm: 382px */
 @media (max-width: 684px) {
+  nav a {
+    margin: 0 0.7rem;
+  }
   .post-line-2 {
     font-size: 1.35rem;
+  }
+  .extras-button {
+    font-size: 1.35rem;
+    padding: 2px 4px;
   }
 }
 @media (max-width: 382px) {
   .post-line-2 {
     font-size: 1rem;
   }
-  .extras-button {
-    font-size: 1.35rem;
-    padding: 2px 4px;
-  }
+
 }
 
 .filter-delete {
@@ -127,17 +132,15 @@ nav {
 }
 .drawer-enter,
 .drawer-exit-to {
+  transform: translateY(-36px);
   opacity: 0;
-}
-.drawer-enter {
-  transform: translateY(-20px);
 }
 /*** ***/
 
 .sub-header {
   margin: 0;
   margin-bottom: 4px;
-  border-bottom: 2px solid light-dark(#222, #ddd);
+  border-bottom: 2px solid var(--highlight-color);
 }
 
 .story {
