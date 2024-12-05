@@ -43,7 +43,7 @@ export function transformStories($, $stories, attributions = false) {
         const attribution = attributions ? $(storyElement).parent().find('.name').text().trim() : '';
         $(storyElement).parent().find('.name').remove();
 
-        const body = removeDarkColors($(storyElement).html());
+        const body = removeUnwantedHTML($(storyElement).html());
 
         const story = {
             body,
@@ -66,12 +66,13 @@ export function filterStories(stories, filters) {
     });
 }
 
-function removeDarkColors(html) {
+function removeUnwantedHTML(html) {
     const bannedColors = ['#222222', '#222', '#000000', '#000', '#efc'];
-
     bannedColors.forEach((color) => {
         html = html.replaceAll(color, '');
     });
+
+    html = html.replaceAll('_blank', '_self');
 
     return html;
 }
