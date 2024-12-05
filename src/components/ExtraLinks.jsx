@@ -15,7 +15,7 @@ export default function ExtraLinks() {
                 <Show when={open()}>
                     <div class="drawer" onClick={toggleOpen}>
                         <p class="sub-header">Newsletters</p>
-                        <a href="/frontend-focus">FE Focus</a>
+                        <a href="/frontend-focus">Frontend Focus</a>
                         <a href="/js-weekly">JS Weekly</a>
 
                         <p class="sub-header">Other Links</p>

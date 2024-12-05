@@ -10,6 +10,12 @@ export default function About() {
             </p>
             <p>Add filters to prevent posts from appearing in the HN feed. Filter by keyword, author or domain.</p>
 
+            <p>
+                <em>New!</em>&nbsp;
+                Checkout the most recent issues of Frontend Focus or Javascript Weekly in the extras menu.
+                Stories in both newsletters are filtered by your keyword filters.
+            </p>
+
             <h2>What is the 'Posts For Haters' Section?</h2>
             <p>
                 With the keyword filter, you can easily hide posts that discuss topics you're not interested in.

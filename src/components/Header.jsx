@@ -11,7 +11,7 @@ export default function Header() {
                 <a href="/manage-filters">Filters</a>
                 <a href="/about">About</a>
 
-                <Show when={suggestedPosts().length || true}>
+                <Show when={suggestedPosts().length}>
                     <a href="/posts-for-haters">Hater Posts</a>
                 </Show>
 
