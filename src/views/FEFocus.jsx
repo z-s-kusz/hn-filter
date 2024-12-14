@@ -6,14 +6,16 @@ import { TransitionGroup } from 'solid-transition-group';
 
 export default function FEFocus() {
     const [stories, setStories] = createSignal([]);
+    const [publishedDate, setPublishedDate] = createSignal('');
     const [loading, setLoading] = createSignal(false);
     const [error, setError] = createSignal(false);
 
     async function getStories() {
         setLoading(true);
         try {
-            const storiesResponse = await getFEFocus();
-            setStories(storiesResponse);
+            const response = await getFEFocus();
+            setStories(response.stories);
+            setPublishedDate(response.date);
             setError(false);
         } catch (err) {
             console.error(err);
@@ -30,6 +32,8 @@ export default function FEFocus() {
             <Switch>
                 <Match when={!loading() && !error()}>
                     <TransitionGroup name="slide-fade" appear>
+                        <h5>{publishedDate()}</h5>
+
                         <For each={stories()}>
                             {(story) => {
                                 return <Story story={story} />

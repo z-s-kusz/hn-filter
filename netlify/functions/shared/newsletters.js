@@ -21,7 +21,13 @@ export async function getMostRecentStories(baseUrl) {
         const quickLinks = transformStories($, $quickLinks, false);
         const allStories = bigStories.concat(quickLinks);
 
-        return allStories;
+        const title = $('title').text();
+        const date = getPublishedDate(title);
+
+        return {
+            stories: allStories,
+            date,
+        };
     } catch (err) {
         console.error('getMostRecentStories error:', err);
         throw Error('Error getting stories.');
@@ -75,4 +81,10 @@ function removeUnwantedHTML(html) {
     html = html.replaceAll('_blank', '_self');
 
     return html;
+}
+
+function getPublishedDate(title) {
+    const splitTitle = title.split(':');
+    if (splitTitle.length >= 2) return splitTitle[1];
+    return 'Date: Not Specified';
 }

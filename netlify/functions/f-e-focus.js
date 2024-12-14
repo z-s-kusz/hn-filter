@@ -7,13 +7,13 @@ exports.handler = async function (event, context) {
 
     try {
         const url = 'https://frontendfoc.us'; // no trailing slash
-        let stories = await getMostRecentStories(url);
+        let { stories, date } = await getMostRecentStories(url);
         if (filters.length) stories = filterStories(stories, filters);
 
         return {
             headers,
             statusCode: 200,
-            body: JSON.stringify(stories),
+            body: JSON.stringify({ stories, date }),
         };
     } catch (err) {
         console.error(err);
