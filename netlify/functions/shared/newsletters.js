@@ -38,13 +38,6 @@ export function transformStories($, $stories, attributions = false) {
     let stories = [];
 
     $stories.each((_i, storyElement) => {
-        const links = [];
-        const $links = $(storyElement).find('a');
-        $links.each((_j, linkElement) => {
-            const href = $(linkElement).attr('href');
-            links.push(href);
-        });
-
         // prevent attribution from showing up twice or not at all since it appears as part of the storyElementBody sometimes
         const attribution = attributions ? $(storyElement).parent().find('.name').text().trim() : '';
         $(storyElement).parent().find('.name').remove();
@@ -53,7 +46,6 @@ export function transformStories($, $stories, attributions = false) {
 
         const story = {
             body,
-            links,
             attribution,
         };
         stories.push(story);
