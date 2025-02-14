@@ -59,6 +59,7 @@ export function filterStories(stories, filters) {
         let includeStory = true;
         filters.forEach((filter) => {
             if (story.body.toLowerCase().includes(filter)) includeStory = false;
+            if (story.attribution.toLowerCase().includes(filter)) includeStory = false;
         });
         return includeStory;
     });

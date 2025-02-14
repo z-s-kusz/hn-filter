@@ -26,6 +26,8 @@ export async function getJSWeekly() {
 
 function getFilterQuery() {
     const keyWordFilters = filters.filter((filter) => filter.type === 'keyword').map((filter) => filter.value);
-    if (keyWordFilters.length < 1) return '';
-    return `?filters=${keyWordFilters.join(',')}`;
+    const domainFilters = filters.filter((filter) =>filter.type === 'domain').map((filter) => filter.value);
+    const allFilters = keyWordFilters.concat(domainFilters);
+    if (allFilters.length < 1) return '';
+    return `?filters=${allFilters.join(',')}`;
 }
