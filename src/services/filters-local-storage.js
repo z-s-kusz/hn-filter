@@ -17,7 +17,7 @@ const saveFilters = (filters) => {
 
 const handleExpiredFilters = (filters) => {
     const unexpiredFilters = filters.filter(filter => {
-        if (filter.expires === '') return true;
+        if (!filter.expires) return true;
         return new Date(filter.expires) > new Date();
     });
 
