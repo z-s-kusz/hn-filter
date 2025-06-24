@@ -44,7 +44,12 @@ export default function Home() {
       filters.forEach((filter) => {
         if (filter.type === 'keyword') {
           const keyword = filter.value.toLowerCase();
-          if (title.includes(keyword)) {
+
+          // lazy yes but I need to account for potential kagi products that are one word (kagiRental or something idk)
+          // will result in kagi posts that ALSO have 'packaging' in them to surface, I'll have to live with that
+          const kagiFalseAlarm = keyword === 'kagi' && title.includes('packaging');
+
+          if (title.includes(keyword) && !kagiFalseAlarm) {
             showPost = false;
             appliedFilter = filter;
           }
