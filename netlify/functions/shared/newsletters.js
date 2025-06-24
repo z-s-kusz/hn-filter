@@ -58,7 +58,12 @@ export function filterStories(stories, filters) {
     return stories.filter((story) => {
         let includeStory = true;
         filters.forEach((filter) => {
-            if (story.body.toLowerCase().includes(filter)) includeStory = false;
+            const storyBody = story.body.toLowerCase();
+            // lazy yes but I need to account for potential kagi products that are one word (kagiRental or something idk)
+            // will result in kagi posts that ALSO have 'packaging' in them to surface, I'll have to live with that
+            const kagiFalseAlarm = keyword === 'kagi' && storyBody.includes('packaging');
+
+            if (storyBody.includes(filter) && !kagiFalseAlarm) includeStory = false;
             if (story.attribution.toLowerCase().includes(filter)) includeStory = false;
         });
         return includeStory;
