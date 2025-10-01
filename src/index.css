@@ -75,7 +75,6 @@ nav {
   .post-line-2 {
     font-size: 1rem;
   }
-
 }
 
 .filter-delete {
@@ -138,8 +137,7 @@ nav {
 /*** ***/
 
 .sub-header {
-  margin: 0;
-  margin-bottom: 4px;
+  margin: 4px 0px;
   border-bottom: 2px solid var(--highlight-color);
 }
 
@@ -148,6 +146,8 @@ nav {
 }
 
 .log-details {
+  padding-bottom: 0.75rem;
+
   p {
     margin: 0.5rem 3rem;
   }
