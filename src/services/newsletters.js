@@ -16,7 +16,6 @@ export async function getFEFocus() {
 export async function getJSWeekly() {
     try {
         const response = await fetch(`${baseUrl}js-weekly/${getFilterQuery()}`);
-        console.log(response);
         const { stories, date } = await response.json();
         return { stories, date };
     } catch (err) {

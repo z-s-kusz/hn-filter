@@ -26,6 +26,10 @@ export default function ExtraLinks() {
                     </div>
                 </Show>
             </Transition>
+
+            <Show when={open()}>
+                <div class="drawer-overlay" onClick={() => setOpen(false)}></div>
+            </Show>
         </>
     );
 }

@@ -17,14 +17,28 @@ nav {
   }
 }
 
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 37%;
+
+  z-index: 1;
+}
+
 .drawer {
   position: absolute;
   top: 32px;
   right: 0;
   width: 200px;
-  background-color: black;
+  background-color: light-dark(white, black);
   border-radius: 5px;
   padding: 1rem;
+
+  z-index: 2;
 
   a {
     display: block;
