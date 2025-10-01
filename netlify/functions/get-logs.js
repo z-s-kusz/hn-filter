@@ -17,7 +17,8 @@ async function getLogs() {
             .items.readAll()
             .fetchAll();
 
-            return resources;
+        // can't query sort becuase I didn't add timestamps in the db :(
+        return resources.toReversed();
     } catch (err) {
         console.error(err);
         throw new Error('error getting logs');
