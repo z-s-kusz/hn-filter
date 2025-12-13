@@ -172,3 +172,9 @@ nav {
   border: 2px solid var(--highlight-color);
   padding: 2rem;
 }
+
+.js-weekly a {
+  @media(prefers-color-scheme: dark) {
+      color: #79b1f9;
+  }
+}

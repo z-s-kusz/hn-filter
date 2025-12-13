@@ -28,7 +28,7 @@ export default function JSWeekly() {
     getStories();
 
     return (
-        <main>
+        <main class="js-weekly">
             <Switch>
                 <Match when={!loading() && !error()}>
                     <TransitionGroup name="slide-fade" appear>
