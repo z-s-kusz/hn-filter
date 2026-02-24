@@ -19,8 +19,8 @@ export default function Logs() {
             console.error(err);
             setError('Error loading logs, see console for more details');
         } finally {
-            setLoading(false)
-;        }
+            setLoading(false);
+        }
     };
 
     loadLogs();
