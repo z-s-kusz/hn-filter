@@ -1,7 +1,4 @@
-/* fetch 66 items in hopes that I can still show 60 items post filtering
-// if more than 6 items end up getting filtered I should remove some filters
-// don't let this echo chamber get too small */
-const fetchLimit = 66;
+const fetchLimit = 80;
 // only show 60 posts, if I'm trying to scroll past page 2 I should find something better to do
 const postLimit = 60;
 

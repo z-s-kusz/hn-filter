@@ -1,7 +1,7 @@
 import { For, Match, Switch, createSignal, onCleanup } from 'solid-js';
 import { TransitionGroup } from 'solid-transition-group';
 import { getPosts as getHNPosts, postLimit } from '../services/hn-firebase';
-import { filters, filteredItems, setFilteredItems } from '../stores/filters';
+import { filters, filteredItems, setFilteredItems, AIRegexFilter } from '../stores/filters';
 import ScrollToTop from '../components/ScrollToTop';
 import Post from '../components/Post';
 import { checkForAISuggestedPosts } from '../stores/AISuggestedPosts';
@@ -41,6 +41,11 @@ export default function Home() {
       const title = post.title.toLowerCase();
       const author = post.by;
   
+      if (AIRegexFilter()) {
+        // skip checking other filters and don't add it to the list of Hater Post checked items
+        if (title.match(/\bai\b/)) return false;
+      }
+
       filters.forEach((filter) => {
         if (filter.type === 'keyword') {
           const keyword = filter.value.toLowerCase();

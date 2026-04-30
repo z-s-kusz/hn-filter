@@ -1,6 +1,6 @@
 import { For, Show, createSignal } from 'solid-js';
 import { TransitionGroup } from 'solid-transition-group';
-import { filters, setFilters } from '../stores/filters';
+import { filters, setFilters, AIRegexFilter, toggleAIRegexFilter } from '../stores/filters';
 import LogOptIn from '../components/LogOptIn';
 
 export default function ManageFilters() {
@@ -85,6 +85,12 @@ export default function ManageFilters() {
             </form>
             <hr />
 
+            <label for="AIRegex">"AI" Regex Filter (will not be scanned for Hater Posts) &nbsp;
+                <input name="AIRegex" type="checkbox"
+                    onInput={toggleAIRegexFilter}
+                    checked={AIRegexFilter()}
+                />
+            </label>
             <h3>Filters:</h3>
             <table>
                 <thead>

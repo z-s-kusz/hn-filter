@@ -25,4 +25,23 @@ const handleExpiredFilters = (filters) => {
     return unexpiredFilters;
 }
 
-export { getSavedFilters, saveFilters };
+const getSavedRegexFilter = (filterName) => {
+    if (!filterName) {
+        console.error('No name provided to getSavedRegexFilter');
+        return false;
+    }
+
+    const regexFilter = localStorage.getItem(filterName);
+    if (regexFilter) {
+        return regexFilter === 'true';
+    }
+    return false;
+}
+
+const saveRegexFilter = (name, value) => {
+    const filterJSON = JSON.stringify(value);
+
+    localStorage.setItem(name, filterJSON);
+};
+
+export { getSavedFilters, saveFilters, getSavedRegexFilter, saveRegexFilter };
