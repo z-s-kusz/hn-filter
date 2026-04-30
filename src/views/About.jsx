@@ -48,6 +48,55 @@ export default function About() {
                 I've since added logging to verify the analysis it provides.
             </p>
     
+            <h2>AI Updates</h2>
+            <p>
+                I started this site in April 2024. I decided to use AI as I described in the section above after testing it
+                out on a handful of test sentences and seeing that it responded with what I considered the correct response all but 1 time.
+                Once the app was deployed I felt like the AI sentiment analysis wasn't always right so I updated the app to push
+                results to Azure CosmosDB so I could track if the AI was correctly identifying sentiment and consistently identifying
+                posts the same way each time. Unfortunately I didn't add a row to track which model was used for any given analysis
+                (or even a date row which I'm still kicking myself for). But here is the current list of models used:
+            </p>
+            <ul>
+                <li>ChatGPT 3.5 Turbo</li>
+                <li>ChatGPT 4.0 Mini</li>
+            </ul>
+            <p>And here is a summary of the current data [02/23/2026]:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Posts Analysed</td>
+                        <td>68</td>
+                    </tr>
+                    <tr>
+                        <td>Total Analyses Performed</td>
+                        <td>305</td>
+                    </tr>
+                    <tr>
+                        <td>Total Incorrect Analyses</td>
+                        <td>26</td>
+                    </tr>
+                    <tr>
+                        <td>Total Posts w/ 1+ Contrary Results</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Current Sentiment Analysis Accuracy</td>
+                        <td>91.5%</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <p>92% accuracy is fine for this use since there is no consequence for the 8% of the time it's incorrect
+                but it terrifies me that so many seem to think that is fine for other uses.
+                Also I will bet that this is pretty much as well as it can do at this task
+            </p>
             <hr/>
             <footer>Favicon by <a target="_blank" href="https://icons8.com">Icons8</a></footer>
         </TransitionGroup>
