@@ -61,7 +61,13 @@ export default function About() {
                 <li>ChatGPT 3.5 Turbo</li>
                 <li>ChatGPT 4.0 Mini</li>
             </ul>
-            <p>And here is a summary of the current data [02/23/2026]:</p>
+            <p>
+                I didn't realize how difficult sentiment analysis is, there are a few cases I'm not even sure
+                what the right answer should be and there are a few where it only slightly tips on way or the other so I
+                counted anything ambiguous as a correct response.
+            </p>
+
+            <p>Here is a summary of the current data [04/30/2026]:</p>
             <table>
                 <thead>
                     <tr>
@@ -72,30 +78,29 @@ export default function About() {
                 <tbody>
                     <tr>
                         <td>Total Posts Analysed</td>
-                        <td>68</td>
+                        <td>156</td>
                     </tr>
                     <tr>
                         <td>Total Analyses Performed</td>
-                        <td>305</td>
+                        <td>694</td>
                     </tr>
                     <tr>
                         <td>Total Incorrect Analyses</td>
-                        <td>26</td>
+                        <td>37</td>
                     </tr>
                     <tr>
                         <td>Total Posts w/ 1+ Contrary Results</td>
-                        <td>4</td>
+                        <td>15</td>
                     </tr>
                     <tr>
                         <td>Current Sentiment Analysis Accuracy</td>
-                        <td>91.5%</td>
+                        <td>94%</td>
                     </tr>
                 </tbody>
             </table>
         
-            <p>92% accuracy is fine for this use since there is no consequence for the 8% of the time it's incorrect
-                but it terrifies me that so many seem to think that is fine for other uses.
-                Also I will bet that this is pretty much as well as it can do at this task
+            <p>94% accuracy is fine for this use since there is no consequence for the 6% of the time it's incorrect
+                but it terrifies me that many seem to think that is fine for more important tasks.
             </p>
             <hr/>
             <footer>Favicon by <a target="_blank" href="https://icons8.com">Icons8</a></footer>
