@@ -25,6 +25,10 @@ export default function JSWeekly() {
         }
     }
 
+    const reload = () => {
+        location.reload();
+    };
+
     getStories();
 
     return (

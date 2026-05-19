@@ -4,23 +4,19 @@ const domain = import.meta.env.DEV ? 'http://localhost:9999' : '';
 const baseUrl = domain + '/.netlify/functions/';
 
 export async function getFEFocus() {
-    try {
-        const response = await fetch(`${baseUrl}f-e-focus/${getFilterQuery()}`);
-        const { stories, date } = await response.json();
-        return { stories, date };
-    } catch (err) {
-        console.error('error fetching fefocus newsletter', err);
-    }
+    const response = await fetch(`${baseUrl}f-e-focus/${getFilterQuery()}`);
+    if (!response.ok) throw new Error('Fetch error, status: ' + response.status);
+
+    const { stories, date } = await response.json();
+    return { stories, date };
 }
 
 export async function getJSWeekly() {
-    try {
-        const response = await fetch(`${baseUrl}js-weekly/${getFilterQuery()}`);
-        const { stories, date } = await response.json();
-        return { stories, date };
-    } catch (err) {
-        console.error('error fetching js weekly newsletter', err);
-    }
+    const response = await fetch(`${baseUrl}js-weekly/${getFilterQuery()}`);
+    if (!response.ok) throw new Error('Fetch error, status: ' + response.status);
+
+    const { stories, date } = await response.json();
+    return { stories, date };
 }
 
 function getFilterQuery() {

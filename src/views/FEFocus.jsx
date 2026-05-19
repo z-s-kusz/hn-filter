@@ -25,6 +25,10 @@ export default function FEFocus() {
         }
     }
 
+    const reload = () => {
+        location.reload();
+    };
+
     getStories();
 
     return (
