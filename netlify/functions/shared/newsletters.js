@@ -9,7 +9,7 @@ export async function getMostRecentStories(baseUrl) {
         const homeResponse = await fetch(baseUrl);
         const homeHTML = await homeResponse.text();
         const $home = cheerio.load(homeHTML);
-        const link = $home('a:contains("our latest issue")').attr('href');
+        const link = $home('a:contains("Latest Issue"), a:contains("latest issue")').attr('href');
 
         const latestIssueResponse = await fetch(baseUrl + link);
         const latestIssueHTML = await latestIssueResponse.text();
