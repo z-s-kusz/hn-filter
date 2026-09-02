@@ -7,16 +7,16 @@ export async function getFEFocus() {
     const response = await fetch(`${baseUrl}f-e-focus/${getFilterQuery()}`);
     if (!response.ok) throw new Error('Fetch error, status: ' + response.status);
 
-    const { stories, date } = await response.json();
-    return { stories, date };
+    const { stories, issueNumber } = await response.json();
+    return { stories, issueNumber };
 }
 
 export async function getJSWeekly() {
     const response = await fetch(`${baseUrl}js-weekly/${getFilterQuery()}`);
     if (!response.ok) throw new Error('Fetch error, status: ' + response.status);
 
-    const { stories, date } = await response.json();
-    return { stories, date };
+    const { stories, issueNumber } = await response.json();
+    return { stories, issueNumber };
 }
 
 function getFilterQuery() {

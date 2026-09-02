@@ -15,7 +15,7 @@ export default function JSWeekly() {
         try {
             const response = await getJSWeekly();
             setStories(response.stories);
-            setPublishedDate(response.date);
+            setPublishedDate(response.issueNumber);
             setError(false);
         } catch (err) {
             console.error(err);

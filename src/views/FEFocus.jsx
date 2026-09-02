@@ -15,7 +15,7 @@ export default function FEFocus() {
         try {
             const response = await getFEFocus();
             setStories(response.stories);
-            setPublishedDate(response.date);
+            setPublishedDate(response.issueNumber);
             setError(false);
         } catch (err) {
             console.error(err);

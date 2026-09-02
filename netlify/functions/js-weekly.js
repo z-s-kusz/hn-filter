@@ -7,13 +7,13 @@ exports.handler = async function (event, context) {
 
     try {
         const url = 'https://javascriptweekly.com'; // no trailing slash
-        let { stories, date } = await getMostRecentStories(url);
+        let { stories, issueNumber } = await getMostRecentStories(url);
         if (filters.length) stories = filterStories(stories, filters);
 
         return {
             headers,
             statusCode: 200,
-            body: JSON.stringify({ stories, date }),
+            body: JSON.stringify({ stories, issueNumber }),
         };
     } catch (err) {
         console.error(err);

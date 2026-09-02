@@ -21,12 +21,12 @@ export async function getMostRecentStories(baseUrl) {
         const quickLinks = transformStories($, $quickLinks, false);
         const allStories = bigStories.concat(quickLinks);
 
-        const title = $('title').text();
-        const date = getPublishedDate(title);
+        const description = $('meta[property="og:description"]').attr('content');
+        const issueNumber = getIssueNumber(description);
 
         return {
             stories: allStories,
-            date,
+            issueNumber,
         };
     } catch (err) {
         console.error('getMostRecentStories error:', err);
@@ -81,8 +81,8 @@ function fixUnwantedHTML(html) {
     return html;
 }
 
-function getPublishedDate(title) {
-    const splitTitle = title.split(':');
-    if (splitTitle.length >= 2) return splitTitle[1];
-    return 'Date: Not Specified';
+function getIssueNumber(description) {
+    const splitDescription = description.split(/\u{2014}/u); // /\u{2014}/u === em-dash :)
+    if (splitDescription.length >= 2) return splitDescription[1].trim();
+    return 'Issue # Not Found';
 }
