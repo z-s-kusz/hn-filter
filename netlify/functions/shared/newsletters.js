@@ -87,6 +87,8 @@ function fixUnwantedHTML(html) {
 
 function getIssueNumber(description) {
     const splitDescription = description.split(/\u{2014}/u); // /\u{2014}/u === em-dash :)
-    if (splitDescription.length >= 2) return splitDescription[1].trim();
+    if (splitDescription.length >= 2){
+        return splitDescription[0].trim() + ' - ' + splitDescription[1].trim();
+    }
     return 'Issue # Not Found';
 }
